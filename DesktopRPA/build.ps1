@@ -1,0 +1,1 @@
+Compress-Archive -LiteralPath . -DestinationPath "DesktopRPA.zip" -Force
