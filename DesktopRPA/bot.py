@@ -1,5 +1,6 @@
 from botcity.core import DesktopBot
 from botcity.maestro import *
+from random import *
 
 # Disable errors if we are not connected to Maestro
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
@@ -83,11 +84,17 @@ def main():
     if not bot.find("item_arquivo", matching=0.97, waiting_time=10000):
         not_found("item_arquivo")
     bot.click_relative(74, 2)
-    bot.paste(r"C:\temp\darfs\NF.pdf")
+
+    # Salvando o nome do arquivo com números randomicamente
+    valor_randomico = randint(1000, 9999)
+    arquivo = rf"C:\temp\darfs\NF_{valor_randomico}.pdf"
+    bot.paste(arquivo)
+
+    print(f"NF gerada: {arquivo}")
     
     if not bot.find("botao_salvar", matching=0.97, waiting_time=10000):
         not_found("botao_salvar")
-    bot.click()  
+    bot.click()
 
     bot.wait(1000)
 
